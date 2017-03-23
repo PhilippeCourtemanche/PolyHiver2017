@@ -19,18 +19,29 @@
                 <li id="iconeGlobe"><a href="#"> <i class="fa fa-globe" aria-hidden="true"></i> <a></li>
             </ul>
         </div>
+        
         <div id="deuxOnglets">
-            <ul id"nav_nav" class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#"> Carte des stations <a></li>
-                <li><a data-toggle="tab" href="#"> Liste des stations <a></li>
-            </ul>
+                <ul id"nav_nav" class="nav nav-tabs">
+                    <li id="Carte" class="active"><a data-toggle="tab" href="#"> Carte des stations <a></li>
+                    <li id="Liste"><a data-toggle="tab" href="#"> Liste des stations <a></li>
+                </ul>
         </div>
         <div class="contenuTables">
-            <div id="carteDesStations" class="tab-pane fade in active">
-                <div class="ui-widget">
-                    <label for="tags">Tags: </label>
-                    <input id="tags">
-                </div>
+            <ul id="dispo1">
+               <div id="carteDesStations" class="tab-pane fade in active">
+                 <li>  <div class="ui-widget">
+                        <label for="tags">Tags: </label>
+                        <input id="tags">
+                    </div></br>
+                    <h2 id="locations"> localisations:</h2></br>
+                    <h3 id="resultat">rien de trouve</h3>
+                    
+                </li>
+                <li><div id="ligne_verticale">
+                    </div>
+                </li>
+            </ul>
+           <div id="map"></div>
             </div>
         </div>
     </body>

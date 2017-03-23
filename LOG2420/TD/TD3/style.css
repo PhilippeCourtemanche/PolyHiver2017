@@ -22,6 +22,33 @@
     margin-right: 15px;
 }
 
-#nav_nav li {
-    height: 600px;
+
+#dispo1 li{
+   
+    float: left;
+    list-style: none;
+}
+#ligne_verticale{
+     width:5px;
+    border-left:1px solid gray;
+    height:170px;
+    margin-left: 80px;
+}
+#Carte{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    
+}
+#Liste{
+     height: 100px;
+    width: 100px;
+    position: relative;
+}
+.tab-pane fade in active
+{
+    background-color: #7fd87f;
+}
+#map{
+      height: 100%; 
 }
