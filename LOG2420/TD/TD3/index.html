@@ -11,7 +11,7 @@
 
        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     </head>
-    <body>
+    <body onload="initMap()"> 
         <div id="premiereBarreDeMenu">
             <ul id="listePremiereBarreDeMenu">
                 <li><a href="#"> Vélo Montréal <a></li>
@@ -22,27 +22,30 @@
         
         <div id="deuxOnglets">
                 <ul id"nav_nav" class="nav nav-tabs">
-                    <li id="Carte" class="active"><a data-toggle="tab" href="#"> Carte des stations <a></li>
-                    <li id="Liste"><a data-toggle="tab" href="#"> Liste des stations <a></li>
+                    <li  class="active"><a id="Carte" data-toggle="tab" href="#"> Carte des stations <a></li>
+                    <li ><a id="Liste" data-toggle="tab" href="#"> Liste des stations <a></li>
                 </ul>
         </div>
         <div class="contenuTables">
-            <ul id="dispo1">
-               <div id="carteDesStations" class="tab-pane fade in active">
-                 <li>  <div class="ui-widget">
-                        <label for="tags">Tags: </label>
-                        <input id="tags">
-                    </div></br>
-                    <h2 id="locations"> localisations:</h2></br>
-                    <h3 id="resultat">rien de trouve</h3>
-                    
-                </li>
-                <li><div id="ligne_verticale">
-                    </div>
-                </li>
-            </ul>
-           <div id="map"></div>
+            
+            <div id="carteDesStations" class="tab-pane fade in active" >
+                <ul id="dispo1">
+                    <li>  <div class="ui-widget">
+                            <label for="tags">Tags: </label>
+                            <input id="tags">
+                        </div></br>
+                        <h2 id="locations"> localisations:</h2></br>
+                        <h3 id="resultat">rien de trouve </h3>
+                        
+                    </li>
+                    <li><div id="ligne_verticale">
+                        </div>
+                    </li>
+                </ul>
             </div>
+            
+         <div id="map"></div>
+    
         </div>
     </body>
 
