@@ -16,15 +16,30 @@ public class Graph {
 		
 	}
 	
+	//permet de creer le graphe a partir d'un fichier "graphte.txt"
 	public void readFromFile(String filePath,String separtor){
 		// A completer
 		
+		//avec la premiere ligne on cree les noeuds
+		//on boucle a travers les lignes restantes
+			//pour le noeud courant on sauvegarde la distance entre ce noeud courant et les autres noeuds 
 	}
 	
+	//permet de retourner tous les arcs sortant d'un noeud source
 	public List<Edge> getOutEdges(Node source) {
 		List<Edge> outEdges = new LinkedList<Edge>(); 
 		// A completer
 		
+		//parcourir la liste d'arcs
+		for(Edge arc : edges)
+		{
+			//si un arc est sortant du noeud source, on l'ajoute a la liste de d'arcs sortants
+			if(arc.getSource() == source)
+			{
+				outEdges.add(arc);
+			}
+		}
+			
 		return outEdges;	
 	}
 	
@@ -32,6 +47,15 @@ public class Graph {
 		List<Edge> inEdges = new LinkedList<Edge>(); 
 		// A completer 
 		
+		//parcourir la liste d'arcs
+				for(Edge arc : edges)
+				{
+					//si un arc est entrant au noeud source, on l'ajoute a la liste d'arcs entrants
+					if(arc.getSource() == dest)
+					{
+						inEdges.add(arc);
+					}
+				}
 		return inEdges;		
 	}
 	// Accesseurs 
