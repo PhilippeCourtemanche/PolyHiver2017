@@ -52,7 +52,7 @@ public class Graph {
 						}
 						catch(NumberFormatException f)
 						{
-							distance=0;
+							distance=inf;
 						}
 						
 							
