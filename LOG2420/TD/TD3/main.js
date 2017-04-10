@@ -29,12 +29,14 @@ function loadData() {
         listStations[station.nom] = station;
 
 
+        
+        //console.log(listStations[station.nom].nom);
       }, this);
-
+      document.getElementById("IDStation").innerHTML = listStations[station.nom].id;
         //creer un tableau pour l auto completion et etre capable de recuperer l objet a partir du nom
 
 
-      console.log(Object.keys(listStations));
+      //console.log(Object.keys(listStations));
 
 
       // ...
@@ -51,12 +53,12 @@ function createStation(infoStation) {
   return station = {
     'id': infoStation.id,
     'nom': infoStation.s,
-    'statut':infoStation.b,
-    'etat':infoStation.su,
-    'actif':infoStation.m,
-    'VDispo':infoStation.ba,
-    'BDispo':infoStation.da,
-    'VNDispo':infoStation.bx,
-    'BNDispo':infoStation.dx,
+    'estBloquee':infoStation.b,
+    'estSuspendue':infoStation.su,
+    'estHorsService':infoStation.m,
+    'nombreVDispo':infoStation.ba,
+    'nombreBDispo':infoStation.da,
+    'nombreVNDispo':infoStation.bx,
+    'nombreBNDispo':infoStation.dx,
   }
 }
