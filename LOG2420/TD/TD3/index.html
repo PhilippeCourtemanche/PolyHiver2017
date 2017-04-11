@@ -1,21 +1,32 @@
 <html>
-    <head>
-        <link rel="stylesheet" type"text/css" href="style.css"/>
-        <!-- Google map API-->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjonwWBWoE1W6L8sU7KPl7zkRLSaPNC2o"></script>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<head>
+    <link rel="stylesheet" type "text/css" href="style.css" />
+    <!-- Google map API-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjonwWBWoE1W6L8sU7KPl7zkRLSaPNC2o"></script>
 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        <script type="text/javascript" src="main.js"></script>
-    </head>
-    <body> 
-        <div id="premiereBarreDeMenu">
-            <ul id="listePremiereBarreDeMenu">
-                <li><a href="#"> Vélo Montréal <a></li>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="main.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Autocomplete - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+    <div id="premiereBarreDeMenu">
+        <ul id="listePremiereBarreDeMenu">
+            <li><a href="#"> Vélo Montréal <a></li>
                 <li><a href="#"> Accueil <a></li>
                 <li id="iconeGlobe"><a href="#"> <i class="fa fa-globe" aria-hidden="true"></i> <a></li>
             </ul>
@@ -23,52 +34,81 @@
         
         <div id="deuxOnglets">
                 <ul id"nav_nav" class="nav nav-tabs">
-                    <li  class="active"><a id="Carte" data-toggle="tab" href="#"> Carte des stations <a></li>
-                    <li ><a id="Liste" data-toggle="tab" href="#"> Liste des stations <a></li>
+                    <li  class="active"><a id="Carte" data-toggle="tab" href="#carteDesStations"> Carte des stations <a></li>
+                    <li ><a id="Liste" data-toggle="tab" href="#listeDesStations"> Liste des stations <a></li>
                 </ul>
-        </div>
-        <div class="contenuTables">
-            
-            <div id="carteDesStations" class="tab-pane fade in active" >
-                <ul id="dispo1">
-                    <li>  <div class="ui-widget">
-                            <label for="tags">Tags: </label>
-                            <input id="tags">
-                        </div></br>
-                        <h2 id="locations"> localisations:</h2></br>
-                        <h3 id="resultat">rien de trouve </h3>
-                        
-                    </li>
-                    <li><div id="ligne_verticale">
+                
+            <div class="tab-content">
+                <div id="carteDesStations" class="tab-pane fade in active">
+                    <div class="contenuTables">
+
+                        <div id="carteDesStations" class="tab-pane fade in active">
+                            <ul id="dispo1">
+                                <li>
+                                    <div class="ui-widget">
+                                        <!--<label for="tags">Tags: </label>-->
+                                        <input id="tags">
+                                    </div>
+                                    </br>
+                                    <h2 id="locations"> Localisation:</h2>
+                                    </br>
+                                    <h3 id="resultat">Aucune sélection </h3>
+
+                                </li>
+                                <li>
+                                    <div id="ligne_verticale">
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                    </li>
-                </ul>
-            </div>
-            
-         <div id="map"></div>
-    
+
+                        <div class="tableauEtatStations">
+                            <table>
+
+                                <tr>
+                                    <td>ID Station <span class="badge" id="IDStation">-</span></td>
+                                    <td>Vélos disponibles <span class="badge" id="nombreVDispo">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Bloquée <span class="badge" id="estBloquee">-</span></td>
+                                    <td>Bornes disponibles <span class="badge" id="nombreBornesDispo">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Suspendue <span class="badge" id="estSuspendue">-</span></td>
+                                    <td>Vélo indisponibles <span class="badge" id="nombreVIndispo">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Hors service <span class="badge" id="estHorsService">-</span></td>
+                                    <td>Bornes indisponibles <span class="badge" id="nombreBornesIndispo">-</span></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="map"></div>
+
+                    </div>
+                </div>
+                <div id="listeDesStations" class="tab-pane fade">
+                    <h3>État de toutes les stations de vélos</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <table id="example" class="display" width="100%"></table>
+                </div>
+            </div> 
         </div>
+
     </body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
+
+<head>
+
+</head>
+<body>
+<!-- 
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags">
+</div>
+--> 
+ 
+</body>
