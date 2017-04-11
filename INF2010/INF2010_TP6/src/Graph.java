@@ -38,8 +38,9 @@ public class Graph {
 				// System.out.println(n.getName());
 			}
 
-
-			while (scanner.hasNextLine()) {
+			boolean totalLu =false;
+			int indiceLecture=0;
+			while (scanner.hasNextLine()&& !totalLu) {
 
 				for(Node n1:nodes){
 					int indice=0;
@@ -49,12 +50,16 @@ public class Graph {
 						try{
 						
 							 distance=Double.parseDouble(strArrD[indice]);
+							 indiceLecture++;
 						}
 						catch(NumberFormatException f)
 						{
 							distance=inf;
+							indiceLecture++;
 						}
-						
+						if(indiceLecture==Math.pow(indiceLecture, 2))
+							totalLu=true;
+							
 							
 						Edge e =new Edge(n1,n2,distance);
 						//List<Edge> edges = new ArrayList<Edge>();
@@ -103,7 +108,7 @@ public class Graph {
 		for(Edge arc : edges)
 		{
 			//si un arc est entrant au noeud source, on l'ajoute a la liste d'arcs entrants
-			if(arc.getSource() == dest)
+			if(arc.getDestination() == dest)
 			{
 				inEdges.add(arc);
 			}
