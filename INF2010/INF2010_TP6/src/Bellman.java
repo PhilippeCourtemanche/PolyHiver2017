@@ -116,6 +116,31 @@ public class Bellman {
 
 	public void  diplayShortestPaths() {
 		Stack<Node> path=new Stack<Node>();
+		boolean estNegatif=false;
+		if(!estNegatif)
+		{
+			for(Node node:graph.getNodes())
+			{
+				int nodeInserer;
+				int k=(piTable.size())-1;
+				Node actuel=node;
+				do{
+
+					nodeInserer=rTable.get(k).get(actuel.getId());
+					path.push( graph.getNodes().get(nodeInserer));
+					actuel=graph.getNodes().get(nodeInserer);
+
+				}while(nodeInserer!=sourceNode.getId());
+				System.out.print("["+ sourceNode + "-"+node+"]");
+				while(!path.isEmpty())
+				{
+					System.out.print(path.peek().getName() + "->");
+					path.pop();
+				}
+				System.out.println(" ");
+
+			}
+		}
 		// A completer	
 
 	}
