@@ -34,7 +34,7 @@ function loadData() {
         listeNoms.push(station.nom);
         //console.log(listStations[station.nom].nom);
       }, this);
-      
+
       //creer un tableau pour l auto completion et etre capable de recuperer l objet a partir du nom
 
       //console.log(Object.keys(listStations));
@@ -61,28 +61,36 @@ function createStation(infoStation) {
     'nombreBDispo': infoStation.da,
     'nombreVNDispo': infoStation.bx,
     'nombreBNDispo': infoStation.dx,
+    'latitude': infoStation.la,
+    'longitude': infoStation.lo,
   }
 }
 
 $(function autoCompletion() {
   $("#tags").autocomplete({
     source: listeNoms,
-    select: function( event, ui ) {
-    document.getElementById("resultat").innerHTML = ui.item.value;
+    select: function (event, ui) {
+      document.getElementById("resultat").innerHTML = ui.item.value;
 
-    //mettre à jour le tableau
-    document.getElementById("IDStation").innerHTML = listStations[ui.item.value].id;
-    document.getElementById("nombreVDispo").innerHTML = listStations[ui.item.value].nombreVDispo;
-    document.getElementById("estBloquee").innerHTML = listStations[ui.item.value].estBloquee;
-    document.getElementById("nombreBornesDispo").innerHTML = listStations[ui.item.value].nombreBDispo;
-    document.getElementById("estSuspendue").innerHTML = listStations[ui.item.value].estSuspendue;
-    document.getElementById("nombreVIndispo").innerHTML = listStations[ui.item.value].nombreVNDispo;
-    document.getElementById("estHorsService").innerHTML = listStations[ui.item.value].estHorsService;
-    document.getElementById("nombreBornesIndispo").innerHTML = listStations[ui.item.value].nombreBDispo;
+      //mettre à jour le tableau
+      document.getElementById("IDStation").innerHTML = listStations[ui.item.value].id;
+      document.getElementById("nombreVDispo").innerHTML = listStations[ui.item.value].nombreVDispo;
+      document.getElementById("estBloquee").innerHTML = listStations[ui.item.value].estBloquee;
+      document.getElementById("nombreBornesDispo").innerHTML = listStations[ui.item.value].nombreBDispo;
+      document.getElementById("estSuspendue").innerHTML = listStations[ui.item.value].estSuspendue;
+      document.getElementById("nombreVIndispo").innerHTML = listStations[ui.item.value].nombreVNDispo;
+      document.getElementById("estHorsService").innerHTML = listStations[ui.item.value].estHorsService;
+      document.getElementById("nombreBornesIndispo").innerHTML = listStations[ui.item.value].nombreBDispo;
 
-   
-  }
-    
+      //mise a jour de la carte
+      var myCenter = new google.maps.LatLng(listStations[ui.item.value].latitude, listStations[ui.item.value].longitude);
+      var mapCanvas = document.getElementById("map");
+      var mapOptions = { center: myCenter, zoom: 15 };
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+      var marker = new google.maps.Marker({ position: myCenter });
+      marker.setMap(map);
+    }
+
   });
 
 });
