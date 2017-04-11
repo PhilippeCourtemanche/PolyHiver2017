@@ -34,7 +34,7 @@ function loadData() {
         listeNoms.push(station.nom);
         //console.log(listStations[station.nom].nom);
       }, this);
-      document.getElementById("IDStation").innerHTML = listStations[station.nom].id;
+      
       //creer un tableau pour l auto completion et etre capable de recuperer l objet a partir du nom
 
       //console.log(Object.keys(listStations));
@@ -66,6 +66,23 @@ function createStation(infoStation) {
 
 $(function autoCompletion() {
   $("#tags").autocomplete({
-    source: listeNoms
+    source: listeNoms,
+    select: function( event, ui ) {
+    document.getElementById("resultat").innerHTML = ui.item.value;
+
+    //mettre à jour le tableau
+    document.getElementById("IDStation").innerHTML = listStations[ui.item.value].id;
+    document.getElementById("nombreVDispo").innerHTML = listStations[ui.item.value].nombreVDispo;
+    document.getElementById("estBloquee").innerHTML = listStations[ui.item.value].estBloquee;
+    document.getElementById("nombreBornesDispo").innerHTML = listStations[ui.item.value].nombreBDispo;
+    document.getElementById("estSuspendue").innerHTML = listStations[ui.item.value].estSuspendue;
+    document.getElementById("nombreVIndispo").innerHTML = listStations[ui.item.value].nombreVNDispo;
+    document.getElementById("estHorsService").innerHTML = listStations[ui.item.value].estHorsService;
+    document.getElementById("nombreBornesIndispo").innerHTML = listStations[ui.item.value].nombreBDispo;
+
+   
+  }
+    
   });
+
 });

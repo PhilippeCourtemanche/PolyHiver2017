@@ -40,11 +40,11 @@
             <div id="carteDesStations" class="tab-pane fade in active" >
                 <ul id="dispo1">
                     <li>  <div class="ui-widget">
-                            <label for="tags">Tags: </label>
+                            <!--<label for="tags">Tags: </label>-->
                             <input id="tags">
                         </div></br>
-                        <h2 id="locations"> localisations:</h2></br>
-                        <h3 id="resultat">rien de trouve </h3>
+                        <h2 id="locations"> Localisation:</h2></br>
+                        <h3 id="resultat">Aucune sélection </h3>
                         
                     </li>
                     <li><div id="ligne_verticale">
@@ -58,19 +58,19 @@
                     
                     <tr>
                         <td>ID Station <span class="badge" id="IDStation">-</span></td>
-                        <td>Vélos disponibles</td>
+                        <td>Vélos disponibles <span class="badge" id="nombreVDispo">-</span></td>
                     </tr>
                     <tr>
-                        <td>Bloquée</td>
-                        <td>Bornes disponibles</td>
+                        <td>Bloquée <span class="badge" id="estBloquee">-</span></td>
+                        <td>Bornes disponibles <span class="badge" id="nombreBornesDispo">-</span></td>
                     </tr>
                     <tr>
-                        <td>Suspendue</td>
-                        <td>Vélo indisponibles</td>
+                        <td>Suspendue <span class="badge" id="estSuspendue">-</span></td>
+                        <td>Vélo indisponibles <span class="badge" id="nombreVIndispo">-</span></td>
                     </tr>
                     <tr>
-                        <td>Hors service</td>
-                        <td>Bornes indisponibles</td>
+                        <td>Hors service <span class="badge" id="estHorsService">-</span></td>
+                        <td>Bornes indisponibles <span class="badge" id="nombreBornesIndispo">-</span></td>
                     </tr>
                     </table>
             </div>
@@ -84,16 +84,13 @@
 
 <head>
 
-  <script>
-  
-  </script>
 </head>
 <body>
- 
+<!-- 
 <div class="ui-widget">
   <label for="tags">Tags: </label>
   <input id="tags">
 </div>
- 
+--> 
  
 </body>
