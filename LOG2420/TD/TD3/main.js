@@ -6,6 +6,7 @@ $(document).ready(function () {
   // ...
   initMap();
   loadData();
+  //autoCompletion();
 
 
 });
@@ -23,18 +24,17 @@ function initMap() {
 
 function loadData() {
   $.get('https://secure.bixi.com/data/stations.json')
+  
+  
     .done(function (data) {
       data.stations.forEach(function (element) {
         var station = createStation(element);
         listStations[station.nom] = station;
 
-
-        
         //console.log(listStations[station.nom].nom);
       }, this);
       document.getElementById("IDStation").innerHTML = listStations[station.nom].id;
         //creer un tableau pour l auto completion et etre capable de recuperer l objet a partir du nom
-
 
       //console.log(Object.keys(listStations));
 
@@ -62,3 +62,36 @@ function createStation(infoStation) {
     'nombreBNDispo':infoStation.dx,
   }
 }
+
+$( function autoCompletion() {
+    
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+    
+  } );
