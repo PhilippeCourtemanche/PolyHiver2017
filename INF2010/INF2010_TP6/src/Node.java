@@ -3,12 +3,12 @@ public class Node {
 
 	private int id;
 	private String name;
-	
+
 	public Node(int id, String n) {
 		this.id = id;
 		this.name = n;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -21,7 +21,7 @@ public class Node {
 	public void setName(String name) {
 		this.name = name;
 	} 
-	
+
 	@Override
 	public int hashCode() {
 		return id;

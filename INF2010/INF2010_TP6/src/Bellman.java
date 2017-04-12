@@ -27,7 +27,7 @@ public class Bellman {
 
 	public void shortestPath() {
 		// completer
-
+		
 		Vector<Double>calculs=new Vector();
 		Vector<Integer>prec=new Vector();
 		/*
@@ -49,26 +49,13 @@ public class Bellman {
 
 		piTable.add(new Vector<Double>(calculs));
 		rTable.add(new Vector<Integer>(prec));
-		int k=1;
-		/*
-		 * 
-		 * remplissage de la pitable et de la rtable
-		 */
-		while(k!=graph.getNodes().size())
-		{
-			piTable.add(new Vector<Double>());
-			rTable.add(new Vector<Integer>());
-
-			k++;
-		}
-		k=1;
 		boolean egal=false;
 		prec=new Vector<Integer>();
 		for(Node node:graph.getNodes())
 		{
 			prec.add(null);
 		}
-		for(k=1;k<graph.getNodes().size() && !egal;k++)
+		for(int k=1;k<=graph.getNodes().size() && !egal;k++)
 		{
 
 			int precedent=k-1;
@@ -105,8 +92,8 @@ public class Bellman {
 
 			}
 
-			piTable.set(k, new Vector<Double>(calculs));
-			rTable.set(k,new Vector<Integer>(prec));
+			piTable.add(k, new Vector<Double>(calculs));
+			rTable.add(k,new Vector<Integer>(prec));
 			if(piTable.get(k-1).equals(piTable.get(k)))
 			{
 				egal=true;
@@ -116,30 +103,77 @@ public class Bellman {
 
 	public void  diplayShortestPaths() {
 		Stack<Node> path=new Stack<Node>();
+		
+		int k=(piTable.size())-1;
 		boolean estNegatif=false;
+		Integer idNegatif = 0;
+		int i = 0;
+		for (Double distance: piTable.get(k))
+		{
+			if (distance < 0 && !estNegatif)
+			{
+				estNegatif = true;
+				idNegatif = i;
+			}
+			i++;
+		}
+		
 		if(!estNegatif)
 		{
 			for(Node node:graph.getNodes())
 			{
-				int nodeInserer;
-				int k=(piTable.size())-1;
-				Node actuel=node;
-				do{
-
-					nodeInserer=rTable.get(k).get(actuel.getId());
-					path.push( graph.getNodes().get(nodeInserer));
-					actuel=graph.getNodes().get(nodeInserer);
-
-				}while(nodeInserer!=sourceNode.getId());
-				System.out.print("["+ sourceNode + "-"+node+"]");
-				while(!path.isEmpty())
+				if (node != sourceNode)
 				{
-					System.out.print(path.peek().getName() + "->");
-					path.pop();
+					int nodeInserer;
+					
+					Node actuel=node;
+					//System.out.println("Source node: " + sourceNode.getName());
+					path.push(node);
+					do{
+						//System.out.println("So your name is " + name);
+						nodeInserer = 0;
+						if(rTable.get(k-1).get(actuel.getId()) != null)
+						{	
+							nodeInserer=rTable.get(k-1).get(actuel.getId());
+							path.push( graph.getNodes().get(nodeInserer));
+							actuel=graph.getNodes().get(nodeInserer);
+						}
+						//System.out.println("So your name is " + piTable.get(k-1).get(actuel.getId()));
+						
+					}while(nodeInserer!=sourceNode.getId());
+					System.out.print("["+ sourceNode.getName() + "-"+node.getName()+"]");
+					System.out.print(" " + piTable.get(k).get(node.getId()) + " ");
+					while(!path.isEmpty())
+					{
+						if(path.peek() != node)
+							System.out.print(path.peek().getName() + "->");
+						else
+							System.out.print(path.peek().getName());
+						path.pop();
+					}
+					System.out.println(" ");
 				}
-				System.out.println(" ");
-
 			}
+		}
+		else
+		{
+			Integer id = idNegatif;
+			path.push(graph.getNodes().get(idNegatif));
+			do
+			{
+				id = graph.getNodes().get(rTable.get(k).get(id)).getId();
+				path.push(graph.getNodes().get(id));
+			}while(!rTable.get(k).get(idNegatif).equals(rTable.get(k).get(id)));
+			System.out.print("["+ path.peek().getName() + "-"+path.peek().getName()+"]");
+			while(!path.isEmpty())
+			{
+				if (path.size() != 1)
+					System.out.print(path.peek().getName() + "->");
+				else
+					System.out.print(path.peek().getName());
+				path.pop();
+			}
+			System.out.println(" ");
 		}
 		// A completer	
 
@@ -148,7 +182,7 @@ public class Bellman {
 	public void displayTables() {
 		// A completer
 		/***********************
-		 * Afficgahe pitable
+		 * Affichage pitable
 		 ****************************/
 		int precedentId=999999;
 
@@ -185,7 +219,7 @@ public class Bellman {
 			}
 		}
 		/****************
-		 * Afficgahe Rtable
+		 * Affichage Rtable
 		 ****************/
 		precedentId=999999999;
 		System.out.println("<<RTABLE>> :");
@@ -196,11 +230,12 @@ public class Bellman {
 			System.out.print(node.getName() + "\t");
 		}
 		System.out.println("");
-		for(Vector<Integer> vector:rTable)
+		for(int k = 0 ; k < rTable.size() ; k++)
 		{
+			Vector<Integer> vector = rTable.get(k);
 			if(!vector.isEmpty())
 			{
-				int iD=rTable.indexOf(vector);
+				int iD=k;
 				if(iD!=precedentId)
 				{
 					System.out.print(iD+ "\t"  + ":" +"\t");

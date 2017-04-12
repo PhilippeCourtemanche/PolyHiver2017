@@ -48,9 +48,9 @@ public class Graph {
 					String[] strArrD = scanner.nextLine().split(separtor);
 					for(Node n2:nodes ){
 						try{
-						
-							 distance=Double.parseDouble(strArrD[indice]);
-							 indiceLecture++;
+
+							distance=Double.parseDouble(strArrD[indice]);
+							indiceLecture++;
 						}
 						catch(NumberFormatException f)
 						{
@@ -59,13 +59,13 @@ public class Graph {
 						}
 						if(indiceLecture==Math.pow(indiceLecture, 2))
 							totalLu=true;
-							
-							
+
+
 						Edge e =new Edge(n1,n2,distance);
 						//List<Edge> edges = new ArrayList<Edge>();
 						edges.add(e);
 						indice++;
-						System.out.println(e.getSource().getName() + " " + e.getDestination().getName() + " " + e.getDistance());
+
 					}
 				}
 			}

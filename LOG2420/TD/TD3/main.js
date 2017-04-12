@@ -49,7 +49,7 @@ $(document).ready(function () {
   loadData();
   console.log(tableauStationsDataTable);
   console.log(dataSet);
-  //autoCompletion();
+  autoCompletion();
       $('#example').DataTable( {
         data: dataSet,
         columns: [
@@ -58,7 +58,10 @@ $(document).ready(function () {
             { title: "Office" },
             { title: "Extn." },
             { title: "Start date" },
-            { title: "Salary" }
+            //{ title: "Salary" },
+            //{ title: "Start date2" },
+            //{ title: "Start date3" },
+            { title: "Start date4" }
         ]
         
     } );
@@ -85,8 +88,11 @@ function loadData() {
         var station = createStation(element);
         listStations[station.nom] = station;
         listeNoms.push(station.nom);
+        
         tableauStationsDataTable.push([station.id, station.nom, station.estBloquee, station.estSuspendue, 
         station.estHorsService, station.nombreVDispo, station.nombreBDispo, station.nombreVNDispo, station.nombreBNDispo]);
+        
+        //tableauStationsDataTable.push([station]);
         //console.log(listStations[station.nom].nom);
       }, this);
 
