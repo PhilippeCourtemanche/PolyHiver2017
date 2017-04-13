@@ -5,21 +5,36 @@
     height: 30px;
     top: 0px;
     bottom: 0px;
+    
 }
 
 #listePremiereBarreDeMenu { 
     padding: 0;
     margin: 0;
+    margin-left: 32px;
 }
 
 #listePremiereBarreDeMenu li { 
     list-style: none;
     display: inline;
+    margin-left: 12px;
+}
+
+#listePremiereBarreDeMenu li a { 
+    color: white;
+    
+}
+
+#accueil {
+    background-color: #236bb2;
+    height: 300%;
 }
 
 #iconeGlobe { 
     float: right;
-    margin-right: 15px;
+    margin-right: 35px;
+    margin-top: 8px;
+    font-size: 16px;
 }
 
 
@@ -35,17 +50,17 @@
     margin-left: 80px;
 }
 #Carte{
-    height: 75px;
-    width: 100px;
-     background-color: #7fd87f;
-    
-   
+    /*background-color: #7fd87f;*/
+    vertical-align: middle;  
+    color:#3399ff;
     
 }
 
 #Liste{
-     height: 75px;
-    width: 100px;
+    margin-top: 20px;
+     height: 40px;
+    width: 150px;
+    color:#3399ff;
   
 }
 
@@ -54,10 +69,11 @@
         width:100%;
    }
 
-table {
+table#infosStation {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    font-size: 14px;
+    border-top: 14px solid #3399ff;
 }
 
 td, th {
@@ -69,4 +85,55 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.tableauEtatStations {
+    float: left;
+}
+
+#locations {
+    font-size: 16;
+}
+
+#resultat {
+    font-size: 16;
+    color: dimgrey;
+    font-weight: normal;
+}
+
+#dispo {
+    margin-left: -500px;
+}
+
+.nav-tabs {
+    margin-left: 80px;
+    border: none;
+    
    
+}
+#nav_nav ul{
+    padding: -15px,-10px
+}
+
+.tab-content>.active {
+    display: block;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus
+{
+    color: #ffffff;
+    background-color:red;  
+}
+#veloMontreal{
+    font-size: 21px;
+}
+
+#etatToutesStations{
+    font-size: 18px;
+}
+
+
+

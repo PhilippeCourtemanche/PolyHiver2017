@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <link rel="stylesheet" type "text/css" href="style.css" />
     <!-- Google map API-->
@@ -17,98 +16,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>jQuery UI Autocomplete - Default functionality</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
-</head>
 
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
+</head>
 <body>
     <div id="premiereBarreDeMenu">
         <ul id="listePremiereBarreDeMenu">
-            <li><a href="#"> Vélo Montréal <a></li>
-                <li><a href="#"> Accueil <a></li>
+            <li id="veloMontreal"><a href="#"> Vélo Montréal <a></li>
+                <li id="accueil"><a href="#"> Accueil <a></li>
                 <li id="iconeGlobe"><a href="#"> <i class="fa fa-globe" aria-hidden="true"></i> <a></li>
             </ul>
         </div>
-        
         <div id="deuxOnglets">
-                <ul id"nav_nav" class="nav nav-tabs">
-                    <li  class="active"><a id="Carte" data-toggle="tab" href="#carteDesStations"> Carte des stations <a></li>
-                    <li ><a id="Liste" data-toggle="tab" href="#listeDesStations"> Liste des stations <a></li>
-                </ul>
-                
-            <div class="tab-content">
-                <div id="carteDesStations" class="tab-pane fade in active">
-                    <div class="contenuTables">
-
-                        <div id="carteDesStations" class="tab-pane fade in active">
-                            <ul id="dispo1">
-                                <li>
-                                    <div class="ui-widget">
-                                        <!--<label for="tags">Tags: </label>-->
-                                        <input id="tags">
-                                    </div>
-                                    </br>
-                                    <h2 id="locations"> Localisation:</h2>
-                                    </br>
-                                    <h3 id="resultat">Aucune sélection </h3>
-
-                                </li>
-                                <li>
-                                    <div id="ligne_verticale">
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="tableauEtatStations">
-                            <table>
-
-                                <tr>
-                                    <td>ID Station <span class="badge" id="IDStation">-</span></td>
-                                    <td>Vélos disponibles <span class="badge" id="nombreVDispo">-</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Bloquée <span class="badge" id="estBloquee">-</span></td>
-                                    <td>Bornes disponibles <span class="badge" id="nombreBornesDispo">-</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Suspendue <span class="badge" id="estSuspendue">-</span></td>
-                                    <td>Vélo indisponibles <span class="badge" id="nombreVIndispo">-</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Hors service <span class="badge" id="estHorsService">-</span></td>
-                                    <td>Bornes indisponibles <span class="badge" id="nombreBornesIndispo">-</span></td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div id="map"></div>
-
+                <ul id="nav_nav" class="nav nav-tabs">
+                    <li  class="active"><a id="Carte" data-toggle="tab" href="#carteDesStations"> Carte des stations </a></li>
+            <li><a id="Liste" data-toggle="tab" href="#listeDesStations"> Liste des stations </a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="carteDesStations" class="tab-pane fade in active">
+                <div class="contenuTables">
+                    <div id="carteDesStations" class="tab-pane fade in active">
+                        <ul id="dispo1">
+                            <li>
+                                <div class="ui-widget">
+                                    <input id="tags">
+                                </div>
+                                </br>
+                                <h2 id="locations"> Localisation:</h2>
+                                </br>
+                                <h3 id="resultat">Aucune sélection </h3>
+                            </li>
+                            <li>
+                                <div id="ligne_verticale">
+                                </div>
+                            </li>
+                        </ul>
                     </div>
+                    <div class="tableauEtatStations">
+                        État de la station de vélos
+                        <table id="infosStation" width=150%>
+                            <tr>
+                                <td>
+                                    <div class="col-md-6">ID Station</div>
+                                    <div class="col-md-6"><span class="badge" id="IDStation">-</span></div>
+                                </td>
+                                <td>
+                                    <div class="col-md-6">Vélos disponibles </div>
+                                    <div class="col-md-6"><span class="badge" id="nombreVDispo">-</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="col-md-6">Bloquée</div>
+                                    <div class="col-md-6"><span class="badge" id="estBloquee">-</span></div>
+                                </td>
+                                <td>
+                                    <div class="col-md-6">Bornes disponibles</div>
+                                    <div class="col-md-6"> <span class="badge" id="nombreBornesDispo">-</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="col-md-6">Suspendue </div>
+                                    <div class="col-md-6"><span class="badge" id="estSuspendue">-</span></div>
+                                </td>
+                                <td>
+                                    <div class="col-md-6">Vélo indisponibles</div>
+                                    <div class="col-md-6"><span class="badge" id="nombreVIndispo">-</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="col-md-6">Hors service </div>
+                                    <div class="col-md-6"><span class="badge" id="estHorsService">-</span></div>
+                                </td>
+                                <td>
+                                    <div class="col-md-6">Bornes indisponibles</div>
+                                    <div class="col-md-6"> <span class="badge" id="nombreBornesIndispo">-</span></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="map"></div>
                 </div>
-                <div id="listeDesStations" class="tab-pane fade">
-                    <h3>État de toutes les stations de vélos</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <table id="example" class="display" width="100%"></table>
-                </div>
-            </div> 
+            </div>
+            <div id="listeDesStations" class="tab-pane fade">
+                <h3 id="etatToutesStations">État de toutes les stations de vélos</h3>
+                <table id="example" class="display" width="100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom Station</th>
+                            <th>Vélos disponibles</th>
+                            <th>Bornes disponibles</th>
+                            <th>État bloqué</th>
+                            <th>État suspendu</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
-
-    </body>
-
-</html>
-
-<head>
-
-</head>
-<body>
-<!-- 
-<div class="ui-widget">
-  <label for="tags">Tags: </label>
-  <input id="tags">
-</div>
---> 
- 
+    </div>
 </body>
+</html>

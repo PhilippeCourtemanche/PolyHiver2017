@@ -18,8 +18,9 @@ function chargerDataTable(donnesBixi){
       {data : 'nombreVDispo'},
       {data : 'nombreBDispo'},
       {data : 'estBloquee'},
-      {data : 'estSuspendue'}
-    ]
+      {data : 'estSuspendue'},
+    ],
+     "pagingType": "simple_numbers"
   });  
 };
 
@@ -92,12 +93,19 @@ $(function autoCompletion() {
       //mettre à jour le tableau
       document.getElementById("IDStation").innerHTML = listStations[ui.item.value].id;
       document.getElementById("nombreVDispo").innerHTML = listStations[ui.item.value].nombreVDispo;
-      document.getElementById("estBloquee").innerHTML = listStations[ui.item.value].estBloquee;
+      document.getElementById("estBloquee").innerHTML = listStations[ui.item.value].estBloquee ? 'Oui' : 'Non';
       document.getElementById("nombreBornesDispo").innerHTML = listStations[ui.item.value].nombreBDispo;
-      document.getElementById("estSuspendue").innerHTML = listStations[ui.item.value].estSuspendue;
+      document.getElementById("estSuspendue").innerHTML = listStations[ui.item.value].estSuspendue ? 'Oui' : 'Non';
       document.getElementById("nombreVIndispo").innerHTML = listStations[ui.item.value].nombreVNDispo;
-      document.getElementById("estHorsService").innerHTML = listStations[ui.item.value].estHorsService;
+      document.getElementById("estHorsService").innerHTML = listStations[ui.item.value].estHorsService ? 'Oui' : 'Non';
       document.getElementById("nombreBornesIndispo").innerHTML = listStations[ui.item.value].nombreBDispo;
+
+      //mise a jour des couleurs dans le tableau
+      document.getElementById("nombreVDispo").style.backgroundColor = listStations[ui.item.value].nombreVDispo > 0 ? '#29B873': '#EE644C';
+      document.getElementById("estBloquee").style.backgroundColor = listStations[ui.item.value].estBloquee ? '#EE644C': '#29B873';
+      document.getElementById("estSuspendue").style.backgroundColor = listStations[ui.item.value].estSuspendue ? '#EE644C': '#29B873';
+      document.getElementById("estHorsService").style.backgroundColor = listStations[ui.item.value].estHorsService ? '#EE644C': '#29B873';
+      document.getElementById("nombreBornesDispo").style.backgroundColor = listStations[ui.item.value].nombreBornesDispo > 0 ? '#EE644C': '#29B873';
 
       //mise a jour de la carte
       var myCenter = new google.maps.LatLng(listStations[ui.item.value].latitude, listStations[ui.item.value].longitude);
